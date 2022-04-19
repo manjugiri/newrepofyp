@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+  <!-- model form  -->
+  <form action ="{% url 'addproperty' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" class="btn btn-primary btn-block" placeholder = "Add Property"></input>
+  </form>
+      
+  <div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100 p-t-85 p-b-20">
+        <form class="login100-form validate-form">
+          <span class="login100-form-title p-b-70">
+           Apply for agent
+          </span>
+          <span class="login100-form-avatar">
+            <img src="images/avatar-01.jpg" alt="AVATAR">
+          </span>
+  
+          <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter Agency Name">
+            <input class="input100" type="text" name="Agency Name">
+            <span class="focus-input100" data-placeholder="Agency Name"></span>
+          </div>
+          <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter Location">
+            <input class="input100" type="text" name="Agency Location">
+            <span class="focus-input100" data-placeholder="agency Location"></span>
+          </div>
+  
+          <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter Contact">
+            <input class="input100" type="text" name="Contact">
+            <span class="focus-input100" data-placeholder="Contact"></span>
+          </div>
+  
+  
+          <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter Email">
+            <input class="input100" type="Email" name="Email">
+            <span class="focus-input100" data-placeholder="Email Address"></span>
+          </div>
+  
+          <div class="wrap-input100 validate-input m-b-50" data-validate="Description">
+            <input class="input100" type="text" name="Description">
+            <span class="focus-input100" data-placeholder="Description"></span>
+          </div>
+  
+  
+          <div class="wrap-input100 validate-input m-b-50" data-validate="Confirm Password">
+            <input class="input100" type="password" name="Password">
+            <span class="focus-input100" data-placeholder="Confirm Password"></span>
+          </div>
+          <form action="">
+              <p>Agency logo</p>
+            <input style="font-family: Poppins-SemiBold;" type="file" name="fasdf" id="">
+        </form>
+        <br>
+  
+          <div class="container-login100-form-btn">
+            <button class="login100-form-btn">
+              Submit
+            </button>
+          </div>
+          <br>
+         
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+      <script src="login.js"></script>
+  </footer>
+
+{% endblock content %}

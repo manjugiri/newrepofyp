@@ -1,0 +1,106 @@
+
+{% extends 'base.html' %}
+<!-- {% load static %} -->
+{% block content %}
+
+<style>
+	.btn{
+		color: black!important;
+	}
+</style>
+	<div id="fh5co-page">
+	
+
+<div class="fh5co-page-title" style="background-image: url(/static/images/slide_6.jpg);">
+	<h1><span class="colored">Find</span> Agent</h1>
+	<div id="best-deal">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading black animate-box" data-animate-effect="fadeIn">
+					<h2>Our Trusted Agents</h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+				</div>
+
+				{%for i in agent%}
+				<div class="col-md-4 text-center item-block animate-box" data-animate-effect="fadeIn">
+
+					<div class="fh5co-agent">
+						<figure>
+							<img src="{{i.Agency_logo.url}}" height="300" width="250" >
+						</figure>
+						<h3>{{i.Agency_name}}</h3>
+						<p>{{i.Agency_Description}}</p>
+						<p><a href="tel:{{i.Agency_Contact}}" class="btn btn-primary btn-outline">Contact Me</a></p>
+						{%if i.total_rating%}
+						<div class="test-rate" style="font-size:16px;color:#F47E00;">
+							{%for j in i.total_rating%}
+							<i class="fa fa-star" aria-hidden="true"></i>
+							{%endfor%}
+							<!-- <i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i> -->
+
+						</div>
+						{%else%}
+						<div class="test-rate" style="font-size:16px;color:#808080;">
+							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i>
+							<i class="fa fa-star" aria-hidden="true"></i>
+
+						</div>
+						{%endif%}
+
+						{%if user.is_authenticated%}
+						
+						
+						<p style="margin-left: 80px;">
+						<form method="post" action="{%url 'agent'%}" style="margin-left-250px;">
+							{%csrf_token%}
+						<select class="form-control btn btn-secondary dropdown-toggle" style="width:150px; border-radius: 0%; text-align: center; margin-left:40px;" onchange="this.form.submit()" name="rating_value">
+							<option value="none">Rate Agent</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+						<input type="hidden" name="agent" value="{{i.id}}">
+						</form>
+						</p>
+
+						{%endif%}
+					</div>
+				</div>
+				{%endfor%}
+				
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center animate-box" data-animate-effect="fadeIn">
+					<nav>
+					  <ul class="pagination">
+					    <li class="disabled">
+					      <a href="#" aria-label="Previous">
+					        <span aria-hidden="true">&laquo;</span>
+					      </a>
+					    </li>
+					    <li class="active"><a href="#">1</a></li>
+					    <li><a href="#">2</a></li>
+					    <li><a href="#">3</a></li>
+					    <li><a href="#">4</a></li>
+					    <li><a href="#">5</a></li>
+					    <li>
+					      <a href="#" aria-label="Next">
+					        <span aria-hidden="true">&raquo;</span>
+					      </a>
+					    </li>
+					  </ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

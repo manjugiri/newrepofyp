@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container" style="padding-top:110px;">
+    <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box" data-animate-effect="fadeIn">
+        <h2>Bidders Info</h2>
+      </div>
+     
+    <table class="table-striped table-success table">
+        <thead>
+          <tr>
+            <th scope="col">S.N.</th>
+            <th scope="col">Property Name</th>
+            <th scope="col">Bidder</th>
+            <th scope="col">Bid Amount</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+        {% for i in bidders%}
+        <tr>
+        
+            <td>{{i.id}}</td>
+            <td>{{i.properti.title}}</td>
+            <td>{{i.user.full_name}}</td>
+            <td>{{i.bid_amount}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+<div>
+    <p>Bid Here</p>
+    <div class="bid-now" style="display:flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;">
+    
+    <div class="col-md-4 item-block animate-box" style="padding-top: 70px;" data-animate-effect="fadeIn">
+        <div class="fh5co-property">
+        <figure>
+            <img src="{{auction_property.photo.url}}" alt="" class="img-responsive">
+            <!-- <a href="#" class="tag">For Sale</a> -->
+        </figure>
+        <div class="fh5co-property-innter">
+            <h3><a style="font-size: 30px !important;" href="#">{{auction_property.title}}</a></h3>
+            <p class="price-status" style="font-size: 17px !important;">
+                <span>Bid Start Time</span> <span>{{auction_property.bidding_start_time}}</span><br>
+                <span>Bid End Time</span> <span>{{auction_property.bidding_end_time}}</span>
+            </p>
+            <div class="price-status" > <p style="font-size: 17px !important;">Minimimum Amount : <span class="price">{{auction_property.price}}</span></p><br>
+
+                <span>Maximum Bid Now: </span><span>{{auction_property.maximum_bid_till_now}}</span>
+
+
+                    
+            </div>
+
+            <p style="font-size: 17px !important;">{{auction_property.description}}</p>
+            </div>
+            <p class="fh5co-property-specification">
+                <span><strong>{{auction_property.area}}</strong> Sq Ft</span>  <span><strong>{{auction_property.bed}}</strong> Beds</span>  <span><strong>{{auction_property.bathtub}}</strong> Baths</span>  <span><strong>{{auction_property.garage}}</strong> Garages</span>
+              </p>
+        </div>
+    </div>
+    <br>
+
+    {%if auction_property.is_bid_start%}
+    <div class="bid-block" style="position: relative;">
+        <span>Your Bid:</span><span>{{user_bid}}</span>
+        <form method="post" action=".">
+            {%csrf_token%}
+        <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter bid amount">
+            <input class="input100" type="text" name="BIdamt">
+            <span class="focus-input100" data-placeholder="Enter your Bid Amount"></span>
+        </div>
+        <div class="container-login100-form-btn">
+            <button class="login100-form-btn">
+            Bid now
+            </button>
+        </div>
+        <span style="color: red;">{{status}}</span>
+        </form>
+    </div>
+    <br>
+    <br><br>
+
+    <h3><a href="{%url 'bidder-list' auction_property.id%}">View all bid of this proeprty</a></h3>
+
+    
+    </div>
+    {%endif%}
+</div>
+</div>
+
+<br>
+
+
+
+{% endblock content %}

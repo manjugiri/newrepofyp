@@ -1,0 +1,304 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
+  />
+  <script
+    defer
+    src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+
+  ></script>
+</head>
+<style>
+    img {
+  max-width: 100%;
+  max-height: 100%;
+ }
+ .aside {
+  height: 100px;
+  width: 100px;
+ }
+
+ .login100-form-btn:hover {
+     color: white !important;
+ }
+</style>
+
+	</head>
+	<body>
+	
+	
+	<div id="fh5co-page">
+
+
+	<div class="fh5co-page-title" style="background-image: url(images/slide_6.jpg);">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 animate-box">
+                    <!-- Page heading -->
+					<h1><span class="colored">Home</span> Loan</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="best-deal">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3 text-center fh5co-heading black animate-box" data-animate-effect="fadeIn">
+					<h2>Explore Bank Loans</h2>
+					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+				</div>
+
+                <section class="section-content padding-y bg">
+                    <div class="container">
+                    
+                    <!-- ============================ COMPONENT 1 ================================= -->
+                    
+                    <div class="row">
+                    <div class="card">
+                    <table class="table table-borderless table-shopping-cart">
+                    <thead class="text-muted">
+                    <tr class="small text-uppercase">
+                      <th scope="col" width="120">Image</th>
+                      <th scope="col" width="250">Bank Name</th>
+                      <th scope="col" width="220">Phone Number</th>
+                      <th scope="col" width="100">Rate</th>
+                      <th scope="col" width="120">Time</th>
+                      <th scope="col" class="text-right" width="200"> Calculate BMI</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for Bank in homeloan %}
+                    <tr>
+                        <td>
+                            <figure class="itemside align-items-center">
+                                <div class="aside"><img src="{{Bank.Bank_image.url}}" class="img-rounded"></div>
+                                
+                            </figure>
+                        </td>
+                        <td>
+                            <figcaption class="info">
+                                <a href="#" class="title text-dark"></a> {{Bank.Bank_name}}</a>
+                                <!-- <p class="text-muted small">Matrix: 25 Mpx <br> Brand: Canon</p> -->
+                            </figcaption>
+
+                        </td>
+                        <td> 
+                            <figcaption class="info">
+                                <a href="#" class="titlee text-dark">{{Bank.Phone_number}}</a>
+                                <!-- <p class="text-muted small">Matrix: 25 Mpx <br> Brand: Canon</p> -->
+                            </figcaption> <!-- col.// -->
+                        </td>
+                        <td> 
+                            <div class="price-wrap"> 
+                                <var class="price">{{Bank.Rate}}</var> 
+                                <!-- <small class="text-muted"> $315.20 each </small>  -->
+                            </div> <!-- price-wrap .// -->
+                        </td>
+                        <td> 
+                            <div class="price-wrap"> 
+                                <!-- <var class="price">Upto 15 Yrs And More Years</var>  -->
+                                <small class="text-muted"> {{Bank.Tenure}} </small> 
+                            </div> <!-- price-wrap .// -->
+                        </td>
+                        <td class="text-right"> 
+                        <a href="" class=" login100-form-btn"> Calculate</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                    </table>
+                    </div>
+                    
+                </div>
+                    
+                    </div>
+                    </section>
+
+                    <section class="section">
+                        <div class="container">
+                          <div class="content">
+                            <h1>Simple Loan Calculator</h1>
+                            <p style="text-align:center;">
+                              The Simple Loan Calculator will determine your estimated payments
+                              for loan amounts, interest rates and terms.
+                            </p>
+                          </div>
+                  
+                          <div class="columns" style="justify-content:center;">
+                            <div class="column is-three-quarters">
+                              <div class="card" >
+                                <div class="card-content" >
+                                  <form id="loan-form">
+                                    <div class="level">
+                                      <!-- Left side -->
+                                      <div class="level-left is-marginless">
+                                        <div class="level-item">
+                                          <p class="number">1</p>
+                                          Loan Amount
+                                        </div>
+                                      </div>
+                  
+                                      <!-- Right side -->
+                                      <div class="level-right">
+                                        <div class="level-item">
+                                          <div class="field">
+                                            <div class="control has-icons-left ">
+                                              <input class="input" id="amount" type="number" />
+                                              <span class="icon is-small is-left">
+                                                <i class="fa fa-rupee-sign"></i>
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                  
+                                    <div class="level">
+                                      <!-- Left side -->
+                                      <div class="level-left is-marginless">
+                                        <div class="level-item">
+                                          <p class="number">2</p>
+                                          Interest Rate
+                                        </div>
+                                      </div>
+                  
+                                      <!-- Right side -->
+                                      <div class="level-right">
+                                        <div class="level-item">
+                                          <div class="field">
+                                            <div class="control has-icons-right">
+                                              <input class="input" id="interest" type="number" />
+                                              <span class="icon is-small is-right">
+                                                <i class="fa fa-percentage"></i>
+                                                
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="level">
+                                      <!-- Left side -->
+                                      <div class="level-left is-marginless">
+                                        <div class="level-item">
+                                          <p class="number">3</p>
+                                          Number Of Years
+                                        </div>
+                                      </div>
+                  
+                                      <!-- Right side -->
+                                      <div class="level-right">
+                                        <div class="level-item">
+                                          <div class="field">
+                                            <div class="control has-icons-left">
+                                              <input class="input" id="years" type="number" />
+                                              <span class="icon is-small is-left">
+                                                <i class="fa fa-calendar"></i> 
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                  
+                                    <div class="control">
+                                      <button
+                                        class="login100-form-btn"
+                                      >
+                                        Calculate
+                                      </button>
+                                    </div>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                      </section>
+                  
+                      <!-- RESULTS -->
+                  <section class="section"> 
+                    <h1 class="title ">Calculated Results</h1>
+              <div class="columns is-multiline" style="justify-content:center;">
+                
+                <div class="column is-12-tablet is-6-desktop is-3-widescreen">
+                  <div class="notification is-primary has-text">
+                    <p id="monthlyPayment" class="title is-1">रु</p>
+                    <p class="subtitle is-4">Monthly Payments</p>
+                  </div>
+                </div>
+              
+                  <div class="column is-12-tablet is-6-desktop is-3-widescreen">
+                      <div class="notification is-success has-text">
+                        <p id="totalInterest" class="title is-1">रु</p>
+                        <p class="subtitle is-4">Total Interest</p>
+                      </div>
+                    </div>
+              
+                    <div class="column is-12-tablet is-6-desktop is-3-widescreen">
+                      <div class="notification is-link has-text">
+                        <p id="totalPayment" class="title is-1">रु</p>
+                        <p class="subtitle is-4">Total Amount</p>
+                      </div>
+                    </div>
+              
+              </div>
+              </section>
+			</div>
+
+		</div>
+	</div>
+</body>
+<script>
+    // Listen for submit
+
+document.getElementById("loan-form").addEventListener("submit", computeResults);
+
+function computeResults(e) {
+  // UI
+
+  const UIamount = document.getElementById("amount").value;
+  const UIinterest = document.getElementById("interest").value;
+  const UIyears = document.getElementById("years").value;
+
+  // Calculate
+
+  const principal = parseFloat(UIamount);
+  const CalculateInterest = parseFloat(UIinterest) / 100 / 12;
+  const calculatedPayments = parseFloat(UIyears) * 12;
+
+  //Compute monthly Payment
+
+  const x = Math.pow(1 + CalculateInterest, calculatedPayments);
+  const monthly = (principal * x * CalculateInterest) / (x - 1);
+  const monthlyPayment = monthly.toFixed(2);
+
+  //Compute Interest
+
+  const totalInterest = (monthly * calculatedPayments - principal).toFixed(2);
+
+  //Compute Total Payment
+
+  const totalPayment = (monthly * calculatedPayments).toFixed(2);
+
+  //Show results
+
+  document.getElementById("monthlyPayment").innerHTML = "रु" + monthlyPayment;
+
+  document.getElementById("totalInterest").innerHTML = "रु" + totalInterest;
+
+  document.getElementById("totalPayment").innerHTML = "रु" + totalPayment;
+
+  e.preventDefault();
+}
+
+</script>
+
+{% endblock %}}

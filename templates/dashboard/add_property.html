@@ -1,0 +1,23 @@
+{% extends 'dashboard/dashboard_head.html' %}
+{% block content %}
+
+
+<h3 class="text-right"><a href="/propertydetails" class="btn btn-primary">View Properties</a></h3>
+<hr>
+
+<section class="section-content padding-y">
+    <div class="card mx-auto" style="max-width:720px; margin-top:40px;">
+      <article class="card-body">
+        <header class="mb-4"><h4 class="card-title text-center">Add Property</h4></header>
+        <form action ="{% url 'addproperty' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{form.as_p}}
+          <input type="submit" class="btn btn-primary btn-block" placeholder = "Add Property"></input>
+                  
+        </form>
+        </article>
+    </div>    
+</section>
+
+
+{% endblock content %}

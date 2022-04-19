@@ -1,0 +1,190 @@
+{% extends 'dashboard/dashboard_head.html' %}
+{% block content %}
+<head>
+ 
+    <style>
+        img {
+      max-width: 100%;
+      max-height: 100%;
+     }
+     .aside {
+      height: 100px;
+      width: 100px;
+     }
+    </style>
+
+  </head>
+
+        <!-- main -->
+      
+            <h3>Properties </h3>
+            <hr>
+
+                <!-- ============================ COMPONENT 1 ================================= -->
+                
+                <div class="row">
+                <div class="card">
+                <table class="table table-borderless">
+                <thead class="text-muted">
+                <tr class="small text-uppercase">
+                    <th scope="col" width="10">S/N</th>
+                  <th scope="col" width="120">Image</th>
+                  <th scope="col" width="300">Title</th>
+                  <th scope="col" width="150">Area(sq ft)</th>
+                  <th scope="col" width="120">Category</th>
+                  <th scope="col" width="250">Address</th>
+                  <th scope="col" width="120">Price</th>
+                  <th scope="col" class="text-center" width="200"> Update</th>
+                  <th scope="col" class="text-center" width="200"> Remove</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in prop %}
+            
+                <tr>
+                    <td>
+                        <div class="aside">
+                            <p>1</p>
+                        </div>  
+                    </td>
+                    <td>
+                        <figure class="itemside align-items-center">
+                            <div class="aside"><img src="{{i.photo.url}}" class="img-rounded"></div>
+                        </figure>
+                    </td>
+                    <td>
+                        <figcaption class="info">
+                            <a href="#" class="title text-dark">{{i.title}}</a>
+                            <p class="text-muted small">Faced: Direction</p>
+                        </figcaption>
+
+                    </td>
+                    <td> 
+                        <small class="text-muted">{{i.area}} sq ft</small> 
+                    </td>
+                    <td>  
+                        <samp class="text-muted">{{i.status}}</samp> 
+                    </td>
+                    <td> 
+                        <p class="text-muted"> {{i.address}} </p> 
+
+                    </td>
+                    <td> 
+                        <p class="text-muted"> ${{i.price}} </p>
+                    </td>
+                    <td class="text-center"> 
+                    <a href="{% url 'update_property' i.id %}" class="btn btn-info"> Update</a>
+                    </td>
+                    
+                    <td class="text-center"> 
+                        <form action="{% url 'delete' i.id %}" method="post">
+                        {% csrf_token %}
+                            <input type="submit" class="btn btn-warning" value="delete">
+                        </form>
+                        <!-- <button class="btn btn-warning" name="{{ i.id}}"> Remove</button> -->
+                        </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+            </div> 
+        </div>
+        <h3 class="text-right"><a href="/addproperty" class="btn btn-primary">Add Property</a></h3>
+
+
+
+<!-- <script>
+    $(document).ready(function(){
+    if($('#result') != null){
+        Read();
+    }
+    $('#create').on('click', function(){
+        $task = $('#task').val();
+        // $lastname = $('#lastname').val();
+
+        if($task != ""){
+            $.ajax({
+                url: 'create',
+                type: 'POST',
+                data: {
+                    task: $task,
+                    // lastname: $lastname,
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function(){
+                    Read();
+                    $('#task').val('');
+                    // $('#lastname').val('');
+                }
+            });              
+        }else {
+            alert("You can't create empty task."); 
+        }
+    });
+
+    $(document).on('click', '.edit', function(){
+        $id = $(this).attr('name');
+        window.location = "edit/" + $id;
+    });
+
+    $('#update').on('click', function(){
+        $task = $('#task').val();
+        // $lastname = $('#lastname').val();
+
+        if ($task == ""){
+            alert("You can't create empty task.");
+        }else {
+            $id = $('#todo_id').val();
+            $.ajax({
+                url: 'update/' + $id,
+                type: 'POST',
+                data: {
+                    task: $task,
+                    // lastname: $lastname,
+                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                },
+                success: function(){
+                    window.location = '/';
+                    alert('The task has been UPDATED successfully!!!');
+                }
+            });
+        }
+    });
+
+    $(document).on('click', '.delete', function(){
+        $id = $(this).attr('name');
+        $.ajax({
+            url: 'delete/' + $id,
+            type: 'POST',
+            data: {
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(){
+                Read();
+                alert("The task has been DELETED!")
+            }
+        });
+    });
+});
+
+function Read(){
+    $.ajax({
+        url: 'read',
+        type: 'POST',
+        async: false,
+        data:{
+            res: 1,
+            csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+        },
+        success: function(response){
+            $('#result').html(response);
+        }
+    });
+}
+</script> -->
+
+
+
+
+{% endblock content %}
+

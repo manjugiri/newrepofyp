@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<head>
+<style>
+.fh5co-property figure .tag{
+    background:#4cb648;
+  }
+  .fh5co-property .fh5co-property-specification > span strong {
+    color: #50a75b;
+}
+.pagination > li.active > a {
+    background: #4cb648 !important;
+}
+</style>
+
+
+<div class="fh5co-page-title" style="background-image: url(/static/images/slide_6.jpg);">
+  <h1><span class="colored">Buy</span> Properties</h1>
+
+<div id="best-deal">
+  <div class="container">
+    <div class="col-md-3">
+      <div class="col-md-12">
+									
+        <form>
+            <select class='form-control' name="property_type" id="select-by-type" onchange="this.form.submit()">
+              
+              <option value="All">Filter By Type</option>
+              <option value="Home" {%if property_type == 'Home'%}selected{%endif%}>Home</option>
+              <option value="Land" {%if property_type == 'Land'%}selected{%endif%}>Land</option>
+              <option value="Room" {%if property_type == 'Room'%}selected{%endif%}>Room</option>
+            </select>
+
+            <input type="hidden" name="sort_by" value="{{sort_by}}">
+          </form>
+
+          </div>
+
+
+      <div class="col-md-12">
+        <form>
+            <select class='form-control' name="sort_by" id="select-by-type" onchange="this.form.submit()">
+              
+              <option value="none_">Sort By</option>
+              <option value="lh" {%if sort_by == 'lh'%}selected{%endif%}>Low to High</option>
+              <option value="hl" {%if sort_by == 'hl'%}selected{%endif%}>High to Low</option>
+            </select>
+            <input type="hidden" name="property_type" value="{{property_type}}">
+
+          </form>
+            
+        
+      </div>
+
+
+              <!-- <div class="col-md-12">
+                
+              <form>
+                  <select class='form-control' name="property_type" id="select-by-type" onchange="this.form.submit()">
+                    
+                    <option value="All">Filter By Type</option>
+                    <option value="Home" {%if property_type == 'Home'%}selected{%endif%}>Home</option>
+                    <option value="Land" {%if property_type == 'Land'%}selected{%endif%}>Land</option>
+                    <option value="Room" {%if property_type == 'Room'%}selected{%endif%}>Room</option>
+                  </select>
+
+                  <input type="hidden" name="sort_by" value="{{sort_by}}">
+                </form>
+
+                </div>
+
+
+            <div class="col-md-12">
+              <form>
+                  <select class='form-control' name="sort_by" id="select-by-type" onchange="this.form.submit()">
+                    
+                    <option value="none_">Sort By</option>
+                    <option value="lh" {%if sort_by == 'lh'%}selected{%endif%}>Low to High</option>
+                    <option value="hl" {%if sort_by == 'hl'%}selected{%endif%}>High to Low</option>
+                  </select>
+                  <input type="hidden" name="property_type" value="{{property_type}}">
+
+                </form>
+                  
+              
+            </div> -->
+
+</div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box" data-animate-effect="fadeIn">
+        <h2>We are Offering the Best Real Estate Deals</h2>
+        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. </p>
+      </div>
+      {% for properti in property%}
+      <div class="col-md-4 item-block animate-box" data-animate-effect="fadeIn">
+        <div class="fh5co-property">
+          <figure>
+            <img src="{{properti.photo.url}}" alt="" class="img-responsive" style="height: 150 !important;">
+            <a href="#" class="tag" style="background:#4cb648;">For Sale</a>
+          </figure>
+          <div class="fh5co-property-innter">
+            <h3><a href="#">{{properti.title}}, {{properti.area}}</a></h3>
+            <div class="price-status">
+                  <span class="price">${{properti.price}}</span>
+                </div>
+                <p>{{properti.description}}</p>
+              </div>
+              <p class="fh5co-property-specification">
+                <span><strong>3500</strong> Sq Ft</span>  <span><strong>3</strong> Beds</span>  <span><strong>3.5</strong> Baths</span>  <span><strong>2</strong> Garages</span>
+              </p>
+        </div>
+      </div>
+      {% endfor %}
+
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="fh5co-cta" style="background-image: url(static/images/slide_4.jpg);">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="col-md-12 text-center animate-box">
+      <h3>We Try To Update The Site Everyday</h3>
+      <p><a href="#" class="btn btn-primary btn-outline with-arrow">Get started now! <i class="icon-arrow-right"></i></a></p>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+
+{% endblock content %}

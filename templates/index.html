@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<div class="main-div" id="bg-img" style="margin-top: 72px;">
+        
+  <div class="div2" id="perfecthome">
+    <h1 class="colored" style="color:#7fffd4; margin-top: 70px; padding-top: 6rem;" >Find your perfect Home</h1>
+  </div>
+  <div class="div3 container">
+    <div class="div3-0">
+      <div style="padding-top: 100px;" >
+        <div class="property_search_form p-4 mt_30 bg_white" style="background-color:#ecf1eb;">
+					<form action="{%url 'search-prop'%}" method="get" class="property_filter_input">
+						{% csrf_token %}
+						<div class="row">
+							<!-- <form action="{%url 'search-prop'%}"> -->
+							<div class="col-md-3">
+								<select name="status" class="selectpicker form-control">
+									<option value="none">Any Status</option>
+									<option value="Rent">Rent</option>
+									<option value="Sale">Sale</option>
+									<option value="Auction">Auction</option>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<select name="type" class="selectpicker form-control">
+									<option value="none">Any Type</option>
+									<option value="Land">Land</option>
+									<option value="Home">Home</option>
+									<option value="Room">Room</option>
+								</select>
+							</div>
+							<div class="col-md-3 ">
+								<input class="form-control" name="address" type="search" placeholder="Search by Addres">
+							</div>
+							<div class="col-md-3">
+								<input class="login100-form-btn" type="submit" name="search" value="Search" class="btn btn_primary">
+							</div>
+							<!-- </form> -->
+
+
+						</div>
+					</form>
+				</div>
+			</div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+<section class="full_row pt_80 bg_white">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-3 col-lg-3 col-sm-6">
+				<div class="offer_item_2 mb_30 text-center wow fadeInLeft" data-wow-delay="200ms"
+					data-wow-duration="1000ms">
+					<div class="icon_large icon mb-2"><i class="flaticon-home-1"></i>
+					</div>
+					<h5 class="title py-3"><a>Verified</a></h5>
+					<p>We don't let unethical and suspicious listings. All properties are manually verified.
+					</p>
+				</div>
+			</div>
+			<div class="col-xl-3 col-lg-3 col-sm-6">
+				<div class="offer_item_2 mb_30 text-center wow fadeInLeft" data-wow-delay="100ms"
+					data-wow-duration="1000ms">
+					<div class="icon_large icon mb-2"><i class="flaticon-handshake"></i>
+					</div>
+					<h5 class="title py-3"><a>No hassle</a></h5>
+					<p>After buyers approach us, we send them over to the sellers. It's hassle free.</p>
+				</div>
+			</div>
+			<div class="col-xl-3 col-lg-3 col-sm-6">
+				<div class="offer_item_2 mb_30 text-center wow fadeInRight" data-wow-delay="100ms"
+					data-wow-duration="1000ms">
+					<div class="icon_large icon mb-2"><i class="flaticon-chat"></i>
+					</div>
+					<h5 class="title py-3"><a>No spam</a></h5>
+					<p>We restrict spammers so, we only provide contact details to legit buyers.</p>
+				</div>
+			</div>
+			<div class="col-xl-3 col-lg-3 col-sm-6">
+				<div class="offer_item_2 mb_30 text-center wow fadeInRight" data-wow-delay="200ms"
+					data-wow-duration="1000ms">
+					<div class="icon_large icon mb-2"><i class="flaticon-export"></i>
+					</div>
+					<h5 class="title py-3"><a>No worries</a></h5>
+					<p>Once you post your listing, you needn't worry. We'll take care the rest.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="bg-light pb-5 shadow-sm">
+<div class="container">
+  <div class="row pt-5">
+      <div class="col-12">
+          <h2 class="text-header">
+              <span>
+                  Whether you’re buying, selling or renting, we can help you move forward.
+              </span>
+          </h2>
+      </div>
+  </div>
+  <div class="row">
+      <!--ADD CLASSES HERE d-flex align-items-stretch-->
+      <div class="col-lg-4 mb-3 d-flex align-items-stretch">
+          <div class="card" style="width: 25rem;">
+              <img src="{% static '/home.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                  <h5 class="card-title">Buy a home</h5>
+                  <p class="card-text">Find your place with an immersive photo experience and the most listings, including things you won’t find anywhere else.</p>
+                  <a href="/buy" class="btn btn-success">Search homes</a>
+              </div>
+          </div>
+      </div>
+      <!--ADD CLASSES HERE d-flex align-items-stretch-->
+      <div class="col-lg-4 mb-3 d-flex align-items-stretch">
+          <div class="card" style="width: 25rem;">
+              <img src="{% static '/buy.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                  <h5 class="card-title">Sell a home</h5>
+                  <p class="card-text">No matter what path you take to sell your home, we can help you navigate a successful sale.</p>
+                  <a href="/sellhome" class="btn btn-success">See Your Options</a>
+              </div>
+          </div>
+      </div>
+      
+      <!--ADD CLASSES HERE d-flex align-items-stretch-->
+      <div class="col-lg-4 mb-3 d-flex align-items-stretch">
+          <div class="card" style="width: 25rem;">
+              <img src="{% static '/rent.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                  <h5 class="card-title">Rent a home</h5>
+                  <p class="card-text">We’re creating a seamless online experience – from shopping on the largest rental network, to applying, to paying rent.</p>
+                  <a href="/rent" class="btn btn-success">Find Rentals</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</section>
+
+
+{% endblock content %}

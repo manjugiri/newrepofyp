@@ -1,0 +1,10 @@
+push code in git-->
+git init
+git remote add origin https://github.com/manjugiri/Final-Year-Project.git
+git add .
+git commit -m 'first comit'
+git branch -M main     
+git push origin main   
+
+pull code from git-->
+git pull origin main
